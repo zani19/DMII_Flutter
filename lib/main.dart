@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'pages/products_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // Classe que inicia o aplicativo
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Exercício 1',
       initialRoute: '/',
       routes: {
-        '/': (context) => Forms(),
-        '/products': (context) => ProductsPage(),
+        '/': (context) => const Forms(),
+        '/products': (context) => const ProductsPage(),
       },
     );
   }
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
 
 // Classe que instância classe responsável por gerenciar estados
 class Forms extends StatefulWidget {
+  const Forms({super.key});
+
   @override
   FormsState createState() => FormsState();
 }
@@ -46,7 +50,7 @@ class FormsState extends State<Forms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Input'),
+        title: const Text('Exercício 1'),
       ),
       body: Align(
         alignment: Alignment.topCenter,
