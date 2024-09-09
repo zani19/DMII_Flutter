@@ -1,6 +1,8 @@
 # DMII_Flutter
 Repositório destinado às atividades de Dispositivos Móveis II
 
+# Atividade 02 - HTTP - Consumir serviços rest (API)
+
 ## Introdução
 Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui a o consumo de informações do endpoint:
 ```sh
