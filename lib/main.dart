@@ -1,128 +1,85 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'pages/products_page.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(const MyApp());
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  MyAppState createState() => MyAppState();
 }
 
-// Classe que inicia o aplicativo
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppState extends State<MyApp> {
+  List<dynamic> dataList = [];
+  // método assíncrono para consumir informações de uma api
+  Future<void> fetchData() async {
+    // realiza a requisição
+    final response =
+        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+    // verifica êxito da requisição
+    if (response.statusCode == 200) {
+      // converte resposta em objeto json
+      final jsonResponse = json.decode(response.body);
+      // atualiza state
+      setState(() {
+        dataList = jsonResponse;
+      });
+    } else {
+      // erro na requisição
+      print('Request failed with status: ${response.statusCode}.');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exercício 1',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const Forms(),
-        '/products': (context) => const ProductsPage(),
-      },
-    );
-  }
-}
-
-// Classe que instância classe responsável por gerenciar estados
-class Forms extends StatefulWidget {
-  const Forms({super.key});
-
-  @override
-  FormsState createState() => FormsState();
-}
-
-// Classe que contém os widgets
-class FormsState extends State<Forms> {
-  final TextEditingController _nome = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-
-  Color textColor = Colors.black; // Cor padrão
-  Color textColorWarning = Colors.grey; // Cor padrão
-  Color borderColor = Colors.grey;
-
-  bool envio = false;
-
-  // Simula envio de informação
-  void _enviar() {
-    Navigator.pushNamed(context, '/products');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Exercício 1'),
-      ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(height: 100.0), // Um retângulo para separar widgets
-            Image.asset(
-              'images/noCloud_logo.png',
-              width: 300,
-              height: 300,
-            ),
-            const SizedBox(height: 16.0), // Um retângulo contendo widget de entrada
-            SizedBox(
-              width: 300,
-              child: TextField(
-                controller: _nome, // Associa controle ao widget
-                keyboardType: TextInputType.text, // Tipo de entrada
-                decoration: InputDecoration(
-                  hintText: 'Entre com nome', // Hint
-                  prefixIcon: const Icon(Icons.account_circle_outlined), // Ícone
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: borderColor), // Cor da borda
-                  ), // Quando receber o foco, altera cor da borda
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
+      title: 'Atividade 02',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('HTTP - Consumir serviços rest (API)'),
+        ),
+        body: ListView.builder(
+          itemCount: dataList.length,
+          itemBuilder: (BuildContext context, int index) {
+            final item = dataList[index];
+            return Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                decoration: BoxDecoration(
+                  color: (index%2==0?Colors.grey:Colors.grey[400]), // Cor de fundo do retângulo
+                  borderRadius: BorderRadius.circular(10.0), // Raio 
                 ),
-              ),
-            ),
-            const SizedBox(height: 16.0), // Um retângulo contendo widget de entrada
-            SizedBox(
-              width: 300,
-              child: TextField(
-                controller: _password, // Associa controle ao widget
-                keyboardType: TextInputType.text, // Tipo de entrada
-                obscureText: true, // Oculta texto
-                decoration: InputDecoration(
-                  hintText: 'Entre com a senha', // Hint
-                  prefixIcon: const Icon(Icons.lock_outline), // Ícone
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: borderColor), // Cor da borda
-                  ), // Quando receber o foco, altera cor da borda
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
+                child: ListTile(
+                  title: Text('${item['id']} - ${item['name']}'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Usuário: ${item['username']}'),
+                      Text('E-mail: ${item['email']}'),
+                      Text(
+                        'Endereço: ${item['address']['street']}, ${item['address']['suite']}; Cidade: ${item['address']['city']}; Zipcode: ${item['address']['zipcode']}; Lat: ${item['address']['geo']['lat']}; Long: ${item['address']['geo']['lng']}'),
+                      Text('Telefone: ${item['phone']}'),
+                      Text('Site: ${item['website']}'),
+                      Text('Empresa: ${item['company']['name']}, ${item['company']['catchPhrase']}, ${item['company']['bs']}'),
+                    ],
+
                   ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            SizedBox(
-              width: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: _enviar,
-                    child: const Text('Enviar'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _nome.clear();
-                      _password.clear();
-                    },
-                    child: const Text('Cancelar'),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                ));
+          },
         ),
       ),
     );
   }
 }
+
+void main() {
+  runApp(const MyApp());
+}
+
+

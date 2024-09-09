@@ -2,7 +2,10 @@
 Repositório destinado às atividades de Dispositivos Móveis II
 
 ## Introdução
-Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui um formulário de login e navegação para uma página de produtos.
+Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui a o consumo de informações do endpoint:
+```sh
+https://jsonplaceholder.typicode.com/users
+```
 
 ## Pré-requisitos
 Antes de começar, certifique-se de ter o seguinte instalado:
@@ -13,7 +16,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ## Clonar o Repositório
 Clone o repositório para sua máquina local usando o seguinte comando:
 ```sh
-git clone -b atividade1 https://github.com/zani19/DMII_Flutter.git
+git clone -b atividade2 https://github.com/zani19/DMII_Flutter.git
 ```
 ## Instalar Dependências
 ```sh
@@ -28,7 +31,4 @@ flutter run
 ```
 
 ## Estrutura do Projeto
-- [lib/main.dart](https://github.com/zani19/DMII_Flutter/blob/atividade1/lib/main.dart): Arquivo principal que inicia o aplicativo.
-- [lib/pages/products_page.dart](https://github.com/zani19/DMII_Flutter/blob/atividade1/lib/pages/products_page.dart): Página que exibe a lista de produtos.
-- [lib/pages/productsDetail_page.dart](https://github.com/zani19/DMII_Flutter/blob/atividade1/lib/pages/productsDetail_page.dart): Página que exibe os detalhes do produto.
-- [lib/pages/productsOrderConfirmation_page.dart](https://github.com/zani19/DMII_Flutter/blob/atividade1/lib/pages/productsOrderConfirmation_page.dart): Página que confirma o pedido.
+- [lib/main.dart](https://github.com/zani19/DMII_Flutter/blob/atividade2/lib/main.dart): Arquivo principal que inicia o aplicativo.
