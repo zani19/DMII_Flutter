@@ -1,6 +1,8 @@
 # DMII_Flutter
 Repositório destinado às atividades de Dispositivos Móveis II
 
+# Atividade 1: Formulário de Login e Navegação
+
 ## Introdução
 Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui um formulário de login e navegação para uma página de produtos.
 
