@@ -1,12 +1,12 @@
 # DMII_Flutter
 Repositório destinado às atividades de Dispositivos Móveis II
 
-# Atividade 02 - HTTP - Consumir serviços rest (API)
+# Avaliação 01 - Filtragem de Notas
 
 ## Introdução
-Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui a o consumo de informações do endpoint:
+Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui  o consumo de informações do endpoint:
 ```sh
-https://jsonplaceholder.typicode.com/users
+http://demo0152687.mockable.io/notasAlunos
 ```
 
 ## Pré-requisitos
@@ -18,7 +18,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ## Clonar o Repositório
 Clone o repositório para sua máquina local usando o seguinte comando:
 ```sh
-git clone -b atividade2 https://github.com/zani19/DMII_Flutter.git
+git clone -b avaliacao01 https://github.com/zani19/DMII_Flutter.git
 ```
 ## Instalar Dependências
 ```sh
@@ -33,4 +33,7 @@ flutter run
 ```
 
 ## Estrutura do Projeto
-- [lib/main.dart](https://github.com/zani19/DMII_Flutter/blob/atividade2/lib/main.dart): Arquivo principal que inicia o aplicativo.
+- [lib/main.dart](https://github.com/zani19/DMII_Flutter/blob/avaliacao01/lib/main.dart): Arquivo principal que inicia o aplicativo com suas respectivas rotas.
+- [lib/pages/home_page.dart](https://github.com/zani19/DMII_Flutter/blob/avaliacao01/lib/home_page.dart): Home page do projeto.
+- [lib/pages/login_page.dart](https://github.com/zani19/DMII_Flutter/blob/avaliacao01/lib/login_page.dart): Página de LOGIN do projeto.
+- [lib/pages/notas_alunos_page.dart](https://github.com/zani19/DMII_Flutter/blob/avaliacao01/lib/notas_alunos_page.dart): Página responsável por exibir as notas dos alunos.
