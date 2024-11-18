@@ -4,7 +4,7 @@ Repositório destinado às atividades de Dispositivos Móveis II
 # Avaliação 01 - Filtragem de Notas
 
 ## Introdução
-Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui  o consumo de informações do endpoint:
+Este repositório contém um aplicativo Flutter desenvolvido para a disciplina de Dispositivos Móveis II. O aplicativo inclui  o consumo de um backend disponível informações do endpoint:
 ```sh
 http://demo0152687.mockable.io/notasAlunos
 ```
@@ -18,7 +18,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ## Clonar o Repositório
 Clone o repositório para sua máquina local usando o seguinte comando:
 ```sh
-git clone -b avaliacao01 https://github.com/zani19/DMII_Flutter.git
+git clone -b atividade4 https://github.com/zani19/DMII_Flutter.git
 ```
 ## Instalar Dependências
 ```sh
